@@ -1,8 +1,9 @@
 using UnityEngine;
+using Mirror;
 
 namespace Character
 {
-    public class Camera : MonoBehaviour
+    public class Camera : NetworkBehaviour
     {
         public float sensitivity = 2.0f;
         public float maxYAngle = 80f;
@@ -15,6 +16,8 @@ namespace Character
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
+            this.gameObject.SetActive(isLocalPlayer);
         }
 
         private void Update()
